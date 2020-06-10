@@ -9,8 +9,8 @@ import pandas as pd
 
 def load_model(model, name, num):
     state = torch.load(f'models/{name}{num}.data')
-#     prefix = 'module.'
-    prefix = '' 
+    prefix = 'module.'
+#     prefix = '' 
     n_clip = len(prefix)
     adapted_dict = {k[n_clip:]: v for k, v in state.items()
                     if k.startswith(prefix)}
