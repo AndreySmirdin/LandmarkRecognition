@@ -7,7 +7,7 @@
 * В папке `src` код, который переиспользуется разными решениями.
 * Помимо этого в корне находятся ноутбуки с экспериментами.
 
-Инструкции по запуску решения из консоли:
+**Инcnрукции по запуску**
 
 ```
 PYTHONPATH=$PYTHONPATH:`pwd`
@@ -19,7 +19,22 @@ python nets/center_loss.py -job train -train_path /mnt/hdd/1/imageData/train/rus
 python nets/center_loss.py -job eval -train_path /mnt/hdd/1/imageData/train/russianDataCleanAdded -test_path /mnt/hdd/1/imageData/index/russianDataCleanAdded -epoch 40
 ```
 
-Помимо этого в репозиториии содержатся следующие файлы с экспериментами:
+Датасеты должны быть в виде:
+```
+dataset
+-- class1
+   -- file1.jpg
+   -- file2.jpg
+-- class2
+   -- file2.jpg
+```
+Для обучения модели необходимо передать пути до датасетов с тестовыми и валидационными данными `-train_path, -test_path`
+Опционально можно указать размер батча `-b` и `-train_again` чтобы обучение началось заного, а не с предыдущего сохранения.
+
+Для классификации можно указать номер эпохи, которую загрузить. Иначе будет использоваться самое последнее сохранение.
+
+
+**Другие эксперименты**:
 * `SimpleClassifier.ipynb` классификация с помощью сети, без дополнительных функция ошибки.
 * `CenterLoss.ipynb` использование функции ошибки Center loss.
 * `ArcFace.ipynb` использование функций ошибок ArcFace loss и CosFace loss.
