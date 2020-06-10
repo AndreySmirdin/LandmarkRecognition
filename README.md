@@ -42,4 +42,16 @@ dataset
 * `DELF.ipynb` замеры точности работы DELF на различных датасетах.
 * `Backbones_charts.ipynb` построение графиков для сравнения разных архитектур сетей.
 
+# Фильтрация датасета
+При помощи файла `nets/filter.py` можно осуществить фильтрацию датасета. Фильтрация выполняется в два этапа с помощью
+разработанной модели (Center loss, так как она демонстрирует наилучшие результаты) и с помощью DELF. Можно запустить сразу оба
+этапа, а можно по отдельности. Примеры запусков:
+```
+# Только первый этап
+python nets/filter.py -train_path /mnt/hdd/1/imageData/train/russianDataCleanAdded -new_dataset_path /mnt/hdd/1/gpsData/gpsData -step 1 -output_step1_csv 1.csv
+# Только второй этап
+python nets/filter.py -train_path /mnt/hdd/1/imageData/train/russianDataCleanAdded -new_dataset_path /mnt/hdd/1/gpsData/gpsData -step 2 -output_step1_csv 1.csv -output_step2_csv 2.csv
+```
+
+Здесь `{1,2}.csv` файлы в который будут записаны файлы, прошедшие соответствующий этап фильтрации в формате `id, landmark_id`.
 
